@@ -65,19 +65,23 @@ function hold(id) {
   currentPlayer.score += currentPlayer.turnTotal; //<--This will update players key(score)
   currentPlayer.turnTotal = 0; //<--This will reset player's key(turnTotal)
   if (currentPlayer.score >= 100) {
-    alert("Player " + game.switch + " wins!");
-    $("#showLater").hide();
+    $(".showLater").hide();
     $("#rules").show();
+    alert("Player " + game.switch + " wins!");
+   
   } else if (game.switch == 1) {
+    $("#player1Score").text(currentPlayer.score);
+    $("#turnScore").text(" ");
+    $("#currentScore").text(" ");
     game.switch = 2; //<--This will change game switch to 2 if it is currently at 1
+  } else if (game.switch == 2) {
+    $("#player2Score").text(currentPlayer.score);
     $("#turnScore").text(" ");
     $("#currentScore").text(" ");
-  } else {
     game.switch = 1; //<--This will change game switch to 1 if it is currently at 2
-    $("#turnScore").text(" ");
-    $("#currentScore").text(" ");
   }
   console.log(currentPlayer);
+  return(currentPlayer.score);
 }
 
 $(document).ready(function() {
